@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Global } from "@emotion/react";
+import TodoTemplate from "./component/TodoTemplate";
+import TodoHead from "./component/TodoHead";
+import Todolist from "./component/TodoList";
 
+const GlobalStyle = () => (
+  <Global styles={{ body: { background: "#ffb3cc" } }} />
+);
+
+let date = new Date();
+let month = date.getMonth() + 1;
+let day = date.getDate();
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <TodoTemplate>
+        <TodoHead>
+          {" "}
+          {month}월 {day}일{" "}
+        </TodoHead>
+        <Todolist />
+      </TodoTemplate>
+    </>
   );
 }
 
